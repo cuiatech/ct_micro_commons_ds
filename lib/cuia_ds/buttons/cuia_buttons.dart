@@ -21,10 +21,11 @@ class CuiaButtons extends StatelessWidget {
   final Color? backgroundColor;
   final Color? textColor;
 
-  static Widget elevated(String text, {void Function()? onTap}) {
+  static Widget elevated(String text, {void Function()? onTap, double? width}) {
     return CuiaButtons(
       text,
       onTap: onTap,
+      width: width,
       icon: const Icon(
         Icons.chevron_right,
         color: Colors.white,
