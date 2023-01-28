@@ -12,6 +12,7 @@ class CuiaTextFormField extends StatefulWidget {
     this.prefixIcon,
     this.obscureText = false,
     this.validateRules,
+    this.errorCallback,
     super.key,
   });
 
@@ -21,6 +22,7 @@ class CuiaTextFormField extends StatefulWidget {
   final Widget? prefixIcon;
   final bool obscureText;
   final List<Rule>? validateRules;
+  final Function(bool)? errorCallback;
 
   @override
   State<CuiaTextFormField> createState() => _CuiaTextFormFieldState();
@@ -61,10 +63,12 @@ class _CuiaTextFormFieldState extends State<CuiaTextFormField> {
     if (res.isNotEmpty) {
       // res.join(", ") => retorna todos os erros em uma string
       setState(() => error = res.first);
+      if (widget.errorCallback != null) {
+        widget.errorCallback!(true);
+      }
     } else {
       setState(() => error = null);
     }
-
     return null;
   }
 
@@ -87,13 +91,6 @@ class _CuiaTextFormFieldState extends State<CuiaTextFormField> {
             controller: widget.controller,
             onChanged: widget.onChanged,
             validator: (_) => validator(),
-            // validator: (str) {
-            //   setState(() => error = str);
-            //   if (widget.validator != null) {
-            //     widget.validator!(str);
-            //   }
-            //   return null;
-            // },
             textAlignVertical: TextAlignVertical.center,
             obscureText: widget.obscureText,
             decoration: InputDecoration(
@@ -112,6 +109,10 @@ class _CuiaTextFormFieldState extends State<CuiaTextFormField> {
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
+              helperText: null,
+              errorText: null,
+              errorMaxLines: null,
+              errorStyle: const TextStyle(height: 0),
             ),
             style: const TextStyle(
               fontSize: 16,
