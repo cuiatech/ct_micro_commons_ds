@@ -4,3 +4,4 @@ export 'cuia_ds/texts/texts.dart';
 export 'cuia_ds/buttons/buttons.dart';
 export 'cuia_ds/text_form_field/text_form_field.dart';
 export 'cuia_ds/toast/cuia_toast.dart';
+export 'cuia_ds/responsive/responsive.dart';
