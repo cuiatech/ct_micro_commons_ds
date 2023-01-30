@@ -145,5 +145,5 @@ class _Rule {
   static String required = 'Campo obrigatório';
   static String email = 'E-mail inválido';
   static String password =
-      'Senha inválida\n\nrequer:\n8+ caracteres,\n1+ caractere maiúscula,\n1+ caractere minúscula,\n1+ números,\n1+ caractere especial.';
+      'Deve ser alfanumérico (A-Z, 0-9), possuir mínimo de 8 caracteres, pelo menos 1 maiúscula, 1 minúscula e 1 caractere especial.';
 }
