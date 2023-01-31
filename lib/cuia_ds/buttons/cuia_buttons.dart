@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
 
@@ -73,10 +75,6 @@ class CuiaButtons extends StatelessWidget {
                 ),
               ),
               if (icon != null) SizedBox(child: icon),
-              // const Icon(
-              //   Icons.chevron_right,
-              //   color: Colors.white,
-              // ),
             ],
           ),
         ),

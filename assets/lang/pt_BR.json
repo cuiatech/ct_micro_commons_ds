@@ -1,3 +1,7 @@
 {
-    
+    "validator-rule-invalid-field": "Campo inválido",
+    "validator-rule-required-field": "Campo obrigatório",
+    "validator-rule-email-invalid-field": "E-mail inválido",
+    "validator-rule-password-invalid-field": "Deve ser alfanumérico (A-Z, 0-9), possuir mínimo de 8 caracteres, pelo menos 1 maiúscula, 1 minúscula e 1 caractere especial.",
+    "a": ""
 }

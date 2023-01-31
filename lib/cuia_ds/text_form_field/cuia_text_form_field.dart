@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, unnecessary_string_escapes
+// ignore_for_file: must_be_immutable, unnecessary_string_escapes, depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
 import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
@@ -141,9 +141,8 @@ enum Rule {
 }
 
 class _Rule {
-  static String invalid = "Campo inválido";
-  static String required = 'Campo obrigatório';
-  static String email = 'E-mail inválido';
-  static String password =
-      'Deve ser alfanumérico (A-Z, 0-9), possuir mínimo de 8 caracteres, pelo menos 1 maiúscula, 1 minúscula e 1 caractere especial.';
+  static String invalid = "validator-rule-invalid-field".i18n();
+  static String required = 'validator-rule-required-field'.i18n();
+  static String email = 'validator-rule-email-invalid-field'.i18n();
+  static String password = 'validator-rule-password-invalid-field'.i18n();
 }
