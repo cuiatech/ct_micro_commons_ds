@@ -2,14 +2,29 @@
 
 import 'package:flutter/material.dart';
 import 'package:flut_micro_commons_shared/flut_micro_commons_shared.dart';
+import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
 
-class CuiaAppBar extends StatelessWidget implements PreferredSizeWidget {
+import 'cuia_app_bar_controller.dart';
+
+class CuiaAppBar extends StatefulWidget implements PreferredSizeWidget {
   const CuiaAppBar({
     this.title = "Workspace",
     Key? key,
   }) : super(key: key);
 
   final String title;
+
+  @override
+  State<CuiaAppBar> createState() => _CuiaAppBarState();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class _CuiaAppBarState extends State<CuiaAppBar> {
+  final controller = Modular.get<CuiaAppBarController>();
+
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +38,9 @@ class CuiaAppBar extends StatelessWidget implements PreferredSizeWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () => Modular.to.pushReplacementNamed("/"),
             child: CuiaLogo.horizontal(
-              text: title,
+              text: widget.title,
               width: 50,
               fontSize: 18,
             ),
@@ -39,12 +54,44 @@ class CuiaAppBar extends StatelessWidget implements PreferredSizeWidget {
                 child: CuiaIcons.support(white: true, size: 28),
               ),
               const SizedBox(width: 20),
-              InkWell(
-                onTap: () {},
-                child: const CircleAvatar(
-                  child: Text("RP"),
-                ),
-              ),
+              FutureBuilder(
+                  future: controller.init(),
+                  builder: (_, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const CircleAvatar(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+
+                    return PopupMenuButton(
+                      position: PopupMenuPosition.under,
+                      itemBuilder: (_) => const [
+                        PopupMenuItem<int>(
+                          value: 0,
+                          child: Text("Perfil"),
+                        ),
+                        PopupMenuItem<int>(
+                          value: 1,
+                          child: Text("Configurações"),
+                        ),
+                        PopupMenuItem<int>(
+                          value: 2,
+                          child:
+                              Text("Sair", style: TextStyle(color: Colors.red)),
+                        ),
+                      ],
+                      onSelected: _onSelected,
+                      child: CircleAvatar(
+                        child: Text(
+                          snapshot.data!.name!
+                              .split(" ")
+                              .map((e) => e.substring(0, 1).toUpperCase())
+                              .toList()
+                              .join(),
+                        ),
+                      ),
+                    );
+                  }),
             ],
           )
         ],
@@ -52,6 +99,9 @@ class CuiaAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Future<void> _onSelected(int value) async {
+    if (value == 0) controller.openProfile();
+    if (value == 1) controller.openSettings();
+    if (value == 2) controller.logout();
+  }
 }
