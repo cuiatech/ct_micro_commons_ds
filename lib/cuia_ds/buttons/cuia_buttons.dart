@@ -12,6 +12,7 @@ class CuiaButtons extends StatelessWidget {
     this.icon,
     this.backgroundColor,
     this.textColor,
+    this.loading = false,
     super.key,
   });
 
@@ -22,8 +23,14 @@ class CuiaButtons extends StatelessWidget {
   final Widget? icon;
   final Color? backgroundColor;
   final Color? textColor;
+  final bool loading;
 
-  static Widget elevated(String text, {void Function()? onTap, double? width}) {
+  static Widget elevated(
+    String text, {
+    void Function()? onTap,
+    double? width,
+    bool loading = false,
+  }) {
     return CuiaButtons(
       text,
       onTap: onTap,
@@ -32,21 +39,32 @@ class CuiaButtons extends StatelessWidget {
         Icons.chevron_right,
         color: Colors.white,
       ),
+      loading: loading,
     );
   }
 
-  static Widget link(String text, {void Function()? onTap}) {
-    return InkWell(
-      onTap: onTap,
-      child: Text(
-        text,
-        style: GoogleFonts.poppins(
-          color: const Color(0xff007dfa),
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-    );
+  static Widget link(
+    String text, {
+    void Function()? onTap,
+    bool loading = false,
+  }) {
+    return loading
+        ? const SizedBox(
+            width: 16,
+            height: 16,
+            child: CircularProgressIndicator(color: Colors.white),
+          )
+        : InkWell(
+            onTap: onTap,
+            child: Text(
+              text,
+              style: GoogleFonts.poppins(
+                color: const Color(0xff007dfa),
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          );
   }
 
   @override
@@ -74,7 +92,13 @@ class CuiaButtons extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              if (icon != null) SizedBox(child: icon),
+              if (icon != null && !loading) SizedBox(child: icon),
+              if (loading)
+                const SizedBox(
+                  width: 16,
+                  height: 16,
+                  child: CircularProgressIndicator(color: Colors.white),
+                ),
             ],
           ),
         ),
