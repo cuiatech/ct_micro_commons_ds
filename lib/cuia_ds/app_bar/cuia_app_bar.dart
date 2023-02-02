@@ -5,6 +5,8 @@ import 'package:flut_micro_commons_shared/flut_micro_commons_shared.dart';
 import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
 
 import 'cuia_app_bar_controller.dart';
+import 'widgets/store_widget.dart';
+import 'widgets/support_widget.dart';
 
 class CuiaAppBar extends StatefulWidget implements PreferredSizeWidget {
   const CuiaAppBar({
@@ -47,51 +49,50 @@ class _CuiaAppBarState extends State<CuiaAppBar> {
           ),
           Row(
             children: [
-              InkWell(
-                onTap: () {
-                  Scaffold.of(context).openEndDrawer();
-                },
-                child: CuiaIcons.support(white: true, size: 28),
-              ),
+              const StoreWidget(),
               const SizedBox(width: 20),
+              const SupportWidget(),
+              const SizedBox(width: 20),
+              // Profile
               FutureBuilder(
-                  future: controller.init(),
-                  builder: (_, snapshot) {
-                    if (!snapshot.hasData) {
-                      return const CircleAvatar(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-
-                    return PopupMenuButton(
-                      position: PopupMenuPosition.under,
-                      itemBuilder: (_) => const [
-                        PopupMenuItem<int>(
-                          value: 0,
-                          child: Text("Perfil"),
-                        ),
-                        PopupMenuItem<int>(
-                          value: 1,
-                          child: Text("Configurações"),
-                        ),
-                        PopupMenuItem<int>(
-                          value: 2,
-                          child:
-                              Text("Sair", style: TextStyle(color: Colors.red)),
-                        ),
-                      ],
-                      onSelected: _onSelected,
-                      child: CircleAvatar(
-                        child: Text(
-                          snapshot.data!.name!
-                              .split(" ")
-                              .map((e) => e.substring(0, 1).toUpperCase())
-                              .toList()
-                              .join(),
-                        ),
-                      ),
+                future: controller.init(),
+                builder: (_, snapshot) {
+                  if (!snapshot.hasData) {
+                    return const CircleAvatar(
+                      child: CircularProgressIndicator(),
                     );
-                  }),
+                  }
+
+                  return PopupMenuButton(
+                    position: PopupMenuPosition.under,
+                    itemBuilder: (_) => const [
+                      PopupMenuItem<int>(
+                        value: 0,
+                        child: Text("Perfil"),
+                      ),
+                      PopupMenuItem<int>(
+                        value: 1,
+                        child: Text("Configurações"),
+                      ),
+                      PopupMenuItem<int>(
+                        value: 2,
+                        child:
+                            Text("Sair", style: TextStyle(color: Colors.red)),
+                      ),
+                    ],
+                    onSelected: _onSelected,
+                    child: CircleAvatar(
+                      child: Text(
+                        snapshot.data!.name!
+                            .split(" ")
+                            .map((e) => e.substring(0, 1).toUpperCase())
+                            .toList()
+                            .join(),
+                      ),
+                    ),
+                  );
+                },
+              ),
             ],
           )
         ],
