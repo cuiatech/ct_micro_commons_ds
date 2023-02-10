@@ -11,7 +11,7 @@ class StoreWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => Modular.to.navigate('/marketplace/'),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),

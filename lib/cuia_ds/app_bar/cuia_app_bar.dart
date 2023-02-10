@@ -11,10 +11,14 @@ import 'widgets/support_widget.dart';
 class CuiaAppBar extends StatefulWidget implements PreferredSizeWidget {
   const CuiaAppBar({
     this.title = "Workspace",
+    this.onIndexTap,
+    this.showStoreButton = true,
     Key? key,
   }) : super(key: key);
 
   final String title;
+  final Function()? onIndexTap;
+  final bool showStoreButton;
 
   @override
   State<CuiaAppBar> createState() => _CuiaAppBarState();
@@ -40,7 +44,8 @@ class _CuiaAppBarState extends State<CuiaAppBar> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           InkWell(
-            onTap: () => Modular.to.pushReplacementNamed("/"),
+            onTap:
+                widget.onIndexTap ?? () => Modular.to.pushReplacementNamed("/"),
             child: CuiaLogo.horizontal(
               text: widget.title,
               width: 50,
@@ -49,7 +54,7 @@ class _CuiaAppBarState extends State<CuiaAppBar> {
           ),
           Row(
             children: [
-              const StoreWidget(),
+              if (widget.showStoreButton) const StoreWidget(),
               const SizedBox(width: 20),
               const SupportWidget(),
               const SizedBox(width: 20),

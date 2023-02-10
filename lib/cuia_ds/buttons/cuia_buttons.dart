@@ -47,6 +47,7 @@ class CuiaButtons extends StatelessWidget {
     String text, {
     void Function()? onTap,
     bool loading = false,
+    Color? color,
   }) {
     return loading
         ? const SizedBox(
@@ -59,7 +60,7 @@ class CuiaButtons extends StatelessWidget {
             child: Text(
               text,
               style: GoogleFonts.poppins(
-                color: const Color(0xff007dfa),
+                color: color ?? const Color(0xff007dfa),
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
               ),
