@@ -51,7 +51,10 @@ class CuiaToast {
         children: [
           icon ?? const Icon(Icons.check),
           const SizedBox(width: 12.0),
-          CuiaText.label(text, color: textColor ?? Colors.black),
+          SizedBox(
+            width: (width ?? 500) - 90,
+            child: CuiaText.label(text, color: textColor ?? Colors.black),
+          ),
         ],
       ),
     );
