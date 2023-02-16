@@ -68,6 +68,46 @@ class CuiaButtons extends StatelessWidget {
           );
   }
 
+  static outline(
+    String text, {
+    void Function()? onTap,
+    double? width,
+    bool loading = false,
+    Widget? icon,
+    Color? color,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6),
+          border: Border.all(
+            color: color ?? const Color(0xff2196f3),
+            width: 1,
+          ),
+          color: Colors.transparent,
+        ),
+        padding: const EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              text,
+              style: GoogleFonts.poppins(
+                color: color ?? const Color(0xff007dfa),
+                fontSize: 15.12,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(width: 10),
+            if (icon != null) icon
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
