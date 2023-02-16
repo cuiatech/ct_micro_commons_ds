@@ -13,6 +13,7 @@ class CuiaTextFormField extends StatefulWidget {
     this.obscureText = false,
     this.validateRules,
     this.errorCallback,
+    this.onFieldSubmitted,
     super.key,
   });
 
@@ -23,6 +24,7 @@ class CuiaTextFormField extends StatefulWidget {
   final bool obscureText;
   final List<Rule>? validateRules;
   final Function(bool)? errorCallback;
+  final void Function(String)? onFieldSubmitted;
 
   @override
   State<CuiaTextFormField> createState() => _CuiaTextFormFieldState();
@@ -93,6 +95,7 @@ class _CuiaTextFormFieldState extends State<CuiaTextFormField> {
             validator: (_) => validator(),
             textAlignVertical: TextAlignVertical.center,
             obscureText: widget.obscureText,
+            onFieldSubmitted: widget.onFieldSubmitted,
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
               isDense: true,
