@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
-import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
+import 'package:ct_micro_commons_dependencies/ct_micro_commons_dependencies.dart';
 
 class StoreWidget extends StatelessWidget {
   const StoreWidget({
@@ -24,7 +24,7 @@ class StoreWidget extends StatelessWidget {
           children: [
             Image.asset(
               '/assets/icons/App.png',
-              package: 'flut_micro_commons_shared',
+              package: 'ct_micro_commons_shared',
               width: 20,
             ),
             const SizedBox(width: 5),

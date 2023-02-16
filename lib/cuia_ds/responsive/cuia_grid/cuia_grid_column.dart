@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
-import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
+import 'package:ct_micro_commons_dependencies/ct_micro_commons_dependencies.dart';
 
 class CuiaGridColumn extends ResponsiveGridCol {
   CuiaGridColumn({

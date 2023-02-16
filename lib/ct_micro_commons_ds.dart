@@ -1,4 +1,4 @@
-library flut_micro_commons_ds;
+library ct_micro_commons_ds;
 
 export 'cuia_ds/cuia_ds_module.dart';
 export 'cuia_ds/texts/texts.dart';

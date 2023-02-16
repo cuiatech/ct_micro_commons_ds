@@ -1,8 +1,8 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
-import 'package:flut_micro_commons_shared/flut_micro_commons_shared.dart';
-import 'package:flut_micro_commons_dependencies/flut_micro_commons_dependencies.dart';
+import 'package:ct_micro_commons_shared/ct_micro_commons_shared.dart';
+import 'package:ct_micro_commons_dependencies/ct_micro_commons_dependencies.dart';
 
 import 'cuia_app_bar_controller.dart';
 import 'widgets/store_widget.dart';
