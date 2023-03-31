@@ -10,7 +10,7 @@ import 'widgets/support_widget.dart';
 
 class CuiaAppBar extends StatefulWidget implements PreferredSizeWidget {
   const CuiaAppBar({
-    this.title = "Workspace",
+    this.title = "Store",
     this.onIndexTap,
     this.showStoreButton = true,
     Key? key,
