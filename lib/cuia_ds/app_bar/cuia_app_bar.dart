@@ -77,10 +77,14 @@ class _CuiaAppBarState extends State<CuiaAppBar> {
                       ),
                       PopupMenuItem<int>(
                         value: 1,
-                        child: Text("Configurações"),
+                        child: Text("Carrinho"),
                       ),
                       PopupMenuItem<int>(
                         value: 2,
+                        child: Text("Configurações"),
+                      ),
+                      PopupMenuItem<int>(
+                        value: 3,
                         child:
                             Text("Sair", style: TextStyle(color: Colors.red)),
                       ),
@@ -107,7 +111,8 @@ class _CuiaAppBarState extends State<CuiaAppBar> {
 
   Future<void> _onSelected(int value) async {
     if (value == 0) controller.openProfile();
-    if (value == 1) controller.openSettings();
-    if (value == 2) controller.logout();
+    if (value == 1) controller.openCart();
+    if (value == 2) controller.openSettings();
+    if (value == 3) controller.logout();
   }
 }

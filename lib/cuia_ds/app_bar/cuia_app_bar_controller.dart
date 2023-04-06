@@ -30,6 +30,10 @@ class CuiaAppBarController {
     print("Perfil is selected.");
   }
 
+  Future<void> openCart() async {
+    Modular.to.navigate('/store/checkout');
+  }
+
   Future<void> openSettings() async {
     // ignore: avoid_print
     print("Configurações is selected.");
