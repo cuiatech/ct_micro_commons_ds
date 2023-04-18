@@ -31,7 +31,7 @@ class CuiaAppBarController {
   }
 
   Future<void> openCart() async {
-    Modular.to.navigate('/store/checkout');
+    Modular.to.navigate('/store/cart');
   }
 
   Future<void> openSettings() async {
