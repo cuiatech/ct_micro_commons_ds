@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable, unnecessary_string_escapes, depend_on_referenced_packages
-
 import 'package:flutter/material.dart';
 import 'package:ct_micro_commons_dependencies/ct_micro_commons_dependencies.dart';
 import 'package:ct_micro_commons_shared/ct_micro_commons_shared.dart';
@@ -97,7 +95,7 @@ class _CuiaTextFormFieldState extends State<CuiaTextFormField> {
             obscureText: widget.obscureText,
             onFieldSubmitted: widget.onFieldSubmitted,
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
+              contentPadding: const EdgeInsets.fromLTRB(10, 25, 10, 10),
               isDense: true,
               border: InputBorder.none,
               prefixIcon: widget.prefixIcon != null

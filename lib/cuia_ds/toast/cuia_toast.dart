@@ -1,5 +1,3 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'package:ct_micro_commons_dependencies/ct_micro_commons_dependencies.dart';
 import 'package:ct_micro_commons_ds/cuia_ds/texts/cuia_text.dart';
 import 'package:flutter/material.dart';
